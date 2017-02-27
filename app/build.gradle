@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'maven'
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: "file:///home/thevis/GIT/maven-repository/")
+    }
+}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
