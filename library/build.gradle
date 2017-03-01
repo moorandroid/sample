@@ -1,5 +1,15 @@
 apply plugin: 'com.android.library'
-apply from: 'maven-push.gradle'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+version = "1.0.1"
+
+def siteUrl = 'https://bintray.com/testme'      // Homepage URL of the library
+def gitUrl = 'https://github.com/moorandroid/sample.git'   // Git repository URL
+
+
+
+
+
 
 android {
     compileSdkVersion 25
@@ -18,6 +28,27 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo =  "maven-repo"
+        name = "com.maven.library"
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+        version {
+            gpg {
+                sign = true //Determines whether to GPG sign the files. The default is false
+                passphrase = properties.getProperty("hackers@2") //Optional. The passphrase for GPG signing'
+            }
         }
     }
 }
