@@ -5,6 +5,9 @@ buildscript {
         maven {
             url "https://jcenter.bintray.com"
         }
+        maven {
+            url  "http://dl.bintray.com/testme/maven-repo"
+        }
         jcenter()
     }
     dependencies {

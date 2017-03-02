@@ -1,0 +1,9 @@
+<settings>
+    <servers>
+        <server>
+            <id>nexus</id>
+            <username>moorthy.a@ec.is</username>
+            <password>hackers2</password>
+        </server>
+    </servers>
+</settings>

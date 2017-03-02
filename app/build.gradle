@@ -4,6 +4,9 @@ uploadArchives {
     repositories.mavenDeployer {
         repository(url: "file:///home/thevis/GIT/maven-repository/")
     }
+    maven {
+        url  "http://dl.bintray.com/testme/maven-repo"
+    }
 }
 android {
     compileSdkVersion 25
